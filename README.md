@@ -15,7 +15,7 @@ Ubuntu 安装完成后替换系统更新源为国内镜像源。
 	sudo gedit /etc/apt/sources.list  #编辑源列表
 	#复制井号后文字不影响命令
 	```
-	> 推荐使用 gedit 编辑。如需使用 VIM ，在更新源结束后输入`sudo apt-get install vim`
+	> 如需使用 VIM ，在更新源结束后输入`sudo apt-get install vim`
 
 2. 复制下列源完全替换之前的源：
 
