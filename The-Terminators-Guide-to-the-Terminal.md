@@ -1,4 +1,5 @@
-# Terminator 终结指南
+# Terminal 终结指南
+# The Terminator's Guide to the Terminal
 
 ## 安装
 
