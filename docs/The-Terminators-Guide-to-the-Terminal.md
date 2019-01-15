@@ -1,67 +1,78 @@
 # Terminal 终结指南
 # The Terminator's Guide to the Terminal
 
-## 安装
+## 使用 zsh
 
-```
-sudo apt-get update
-sudo apt-get install terminator
-```
+### 安装配置 zsh
 
-## 美化
+1. 查看系统中是否有 zsh
 
-```
-cd ~/.config/terminator/ 
-sudo vim config
-```
+	```
+	cat /etc/shells
+	 ```
+	
+2. 若系统中没有 zsh ，则需要安装
 
-我的配置如下：
+	```
+	sudo apt-get install zsh
+	```
+	
+3. 把默认的Shell改成zsh
 
-```
-[global_config]
-  title_transmit_bg_color = "#d30102"
-  focus = system
-  suppress_multiple_term_dialog = True
-[keybindings]
-[profiles]
-  [[default]]
-    palette = "#2d2d2d:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#d3d0c8:#747369:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#f2f0ec"
-    background_color = "#2D2D2D" # 背景颜色
-    background_image = None   
-    background_darkness = 0.85 
-    cursor_color = "#EEE9E9" # 光标颜色
-    cursor_blink = True # 光标是否闪烁
-    foreground_color = "#EEE9E9" # 文字的颜色
-    use_system_font = False # 是否启用系统字体
-    font = Ubuntu Mono 13  # 字体设置，后面的数字表示字体大小
-    show_titlebar = False # 不显示标题栏，也就是 terminator 中那个默认的红色的标题栏
-[layouts]
-  [[default]]
-    [[[child1]]]
-      type = Terminal
-      parent = window0
-      profile = default
-    [[[window0]]]
-      type = Window
-      parent = ""
-[plugins]
-```
+	```
+	chsh -s /bin/zsh
+	```
+	
+4. 配置密码文件，解决chsh: PAM认证失败的问题
 
-## 设置为默认终端
+	```
+	sudo vim /etc/passwd
+	```
+	把第一行的 /bin/bash 改成 /bin/zsh ，把最后一行的 /bin/bash 改成 /bin/zsh
+	
+### 安装配置 Oh My Zsh
 
-```
-sudo apt-get install dconf-tools
-gsettings set org.gnome.desktop.default-applications.terminal exec   /usr/bin/terminator
-gsettings set org.gnome.desktop.default-applications.terminal exec-arg "-x"
-```
+1. 安装
 
-## 常用快捷键
+	```
+	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+	```
+	
+2. 配置 
+	
+	- 访问[https://github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)查看指南
+	
+### 美化 zsh
 
-快捷键 | 功能
-:---: | :---:
-Ctrl + Shift + E | 垂直分割窗口
-Ctrl + Shift + O | 水平分割窗口
-Ctrl + Shift + X | 当前窗口全屏
-Ctrl + Shift + Z | 回到多窗口界面
-Ctrl + Tap | 切换窗口
-Ctrl + D | 关闭当前窗口
+1. 安装 powerlevel9k 主题
+	
+	访问[bhilburn/powerlevel9k](https://github.com/bhilburn/powerlevel9k)查看指南
+	
+2. 安装 Powerline 字体
+
+	sudo apt-get install fonts-powerline
+	
+3. 安装 Awesome-Powerline 字体
+
+	访问[gabrielelana/awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts)查看指南
+
+4. （可选）拷贝我的配置文件
+	
+	```
+	cp ./terminal-conf/zshrc ~/.zshrc
+	```
+
+## 修改终端配色
+
+访问[Anthony25/gnome-terminal-colors-solarized](https://github.com/Anthony25/gnome-terminal-colors-solarized)查看指南
+
+	
+## 配置 VIM
+
+访问[wklken/k-vim](https://github.com/wklken/k-vim)查看指南
+> （可选）拷贝我的配置文件	
+> 
+> ```
+> cp ./terminal-conf/vimrc ~/k-vim/vimrc
+> cp ./terminal-conf/vimrc.bundles ~/k-vim/vimrc.bundles
+> ```
