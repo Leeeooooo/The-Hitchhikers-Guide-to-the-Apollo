@@ -164,7 +164,7 @@ git-lfs clone https://github.com/ApolloAuto/apollo.git
 
 Github 访问慢的解决方案：
 
-- VPN加速方法见 ***ShadowSocks 附加指南***
+- VPN加速方法见 [ShadowSocks 附加指南](https://github.com/liyubang/The-Hitchhikers-Guide-to-the-Apollo/blob/master/The%20Additional%20guide%20ShadowSocks.md)
 
 - 修改 hosts 加速方法：
 
