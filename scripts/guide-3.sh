@@ -18,7 +18,7 @@ source ${BASE_DIR}/guide_base.sh
 check_driver  #检查驱动
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash  #添加git-lfs源
 apt_upgrade
-sudo apt-get -y install openssh-server git git-lfs  #安装必要软件
+sudo apt-get -y install openssh-server git git-lfs exfat-utils #安装必要软件
 cd
 git-lfs clone https://github.com/ApolloAuto/apollo.git  #克隆Apollo源码
 echo "export APOLLO_HOME=${HOME}/apollo" >> ${HOME}/.bashrc
