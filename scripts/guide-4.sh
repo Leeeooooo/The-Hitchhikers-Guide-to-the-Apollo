@@ -4,7 +4,7 @@
 function check_U_disk() {
 until [ -d /media/${USER}/exfat-utils/docker_images ]; do
     echo 'Please insert the USB flash disk.'
-    echo -n "If inserted,type 'y' or 'Y' to continue, or type any other key to exit."
+    echo "If inserted,type 'y' or 'Y' to continue, or type any other key to exit."
     read -n 1 user_agreed
     if ! [ "$user_agreed" == "y" ] || [ "$user_agreed" == "Y" ]; then
         exit 1
@@ -20,7 +20,7 @@ docker load -i ${HOME}/docker_images/images.tar  #安装docker镜像
 
 sudo rm -rf /var/crash/*  #删除错误日志
 sudo rm -rf ${HOME}/docker_images
-sed -i '/guide-4/d' ${HOME}/.bashrc
+sed -i '/guide/d' ${HOME}/.bashrc
 
 echo "export APOLLO_HOME=${HOME}/apollo" >> ${HOME}/.bashrc
 echo "export PATH=${HOME}/apollo/docker/scripts:$PATH:/usr/local/cuda/bin" >> ${HOME}/.bashrc  #配置环境变量

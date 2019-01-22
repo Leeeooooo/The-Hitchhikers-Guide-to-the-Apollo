@@ -4,7 +4,7 @@
 function check_U_disk() {
 until [ -d /media/${USER}/GUIDE/install_drivers ]; do
     echo 'Please insert the USB flash disk.'
-    echo -n "If inserted,type 'y' or 'Y' to continue, or type any other key to exit."
+    echo "If inserted,type 'y' or 'Y' to continue, or type any other key to exit."
     read -n 1 user_agreed
     if ! [ "$user_agreed" == "y" ] || [ "$user_agreed" == "Y" ]; then
         exit 1

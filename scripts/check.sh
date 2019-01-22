@@ -23,7 +23,7 @@ fi
 check_driver  #检查显卡驱动及工具
 
 function check_docker() {
-if ! [ -x "$(command -v nvidia-smi)" ]; then
+if ! [ -x "$(command -v docker)" ]; then
     echo 'Docker installed failed.'
 fi
 }
