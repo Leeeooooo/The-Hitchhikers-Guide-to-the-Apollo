@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-echo -n'Copying files...'
+echo -n 'Copying files...'
 cp -ru /media/${USER}/exfat-utils/docker_images/ ${HOME}/ #拷贝docker镜像
 echo 'done.'
 docker load -i ${HOME}/docker_images/images.tar  #安装docker镜像
