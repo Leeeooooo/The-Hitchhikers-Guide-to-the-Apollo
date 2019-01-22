@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 function install_docker_x86() {
   sudo modprobe overlay
   sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -11,18 +12,17 @@ function install_docker_x86() {
   sudo groupadd docker
   sudo gpasswd -a $USER docker
 }
+install_docker_x86  #安装docker
 
-BASE_DIR="$(cd `dirname $0`; pwd)"
-source ${BASE_DIR}/guide_base.sh
 
-check_driver  #检查驱动
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash  #添加git-lfs源
-apt_upgrade
+sudo apt-get update
+sudo -y apt-get upgrade
 sudo apt-get -y install openssh-server git git-lfs exfat-utils #安装必要软件
+
 cd
 git-lfs clone https://github.com/ApolloAuto/apollo.git  #克隆Apollo源码
-echo "export APOLLO_HOME=${HOME}/apollo" >> ${HOME}/.bashrc
-echo "export PATH=${HOME}/apollo/docker/scripts:$PATH" >> ${HOME}/.bashrc  #配置环境变量
-source ${HOME}/.bashrc
-install_docker_x86  #安装docker
-s_reboot
+
+sed -i 's/guide-3/guid-4/g' ${HOME}/.bashrc
+
+sudo reboot
