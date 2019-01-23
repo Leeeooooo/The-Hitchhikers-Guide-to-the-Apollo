@@ -147,6 +147,7 @@ set showmode
 set scrolloff=7
 
 " set winwidth=79
+
 " 命令行（在状态行下）的高度，默认为1，这里是2
 set statusline=%<%f\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}]\ %-14.(%l,%c%V%)\ %P
 " Always show the status line - use 2 lines for the status bar
@@ -234,13 +235,13 @@ set nrformats=
 " autocmd InsertEnter * :set norelativenumber number
 " autocmd InsertLeave * :set relativenumber
 " function! NumberToggle()
-"  if(&relativenumber == 1)
-"    set norelativenumber number
-"  else
-"    set relativenumber
-"  endif
-"endfunc
-"nnoremap <C-n> :call NumberToggle()<cr>
+"   if(&relativenumber == 1)
+"     set norelativenumber number
+"   else
+"     set relativenumber
+"   endif
+" endfunc
+" nnoremap <C-n> :call NumberToggle()<cr>
 
 " 防止tmux下vim的背景色显示异常
 " Refer: http://sunaku.github.io/vim-256color-bce.html
@@ -249,13 +250,6 @@ if &term =~ '256color'
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
-endif
-
-"光标显示竖线
-if has("autocmd")
-    au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-    au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-    au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
 endif
 
 "==========================================
@@ -348,45 +342,45 @@ nnoremap gj j
 
 " F1 废弃这个键,防止调出系统帮助
 " I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
-noremap <F1> <Esc>"
+" noremap <F1> <Esc>"
 
 " F2 行号开关，用于鼠标复制代码用
 " 为方便复制，用<F2>开启/关闭行号显示:
-function! HideNumber()
-  if(&relativenumber == &number)
-    set relativenumber! number!
-  elseif(&number)
-    set number!
-  else
-    set relativenumber!
-  endif
-  set number?
-endfunc
-nnoremap <F2> :call HideNumber()<CR>
+" function! HideNumber()
+"   if(&relativenumber == &number)
+"     set relativenumber! number!
+"   elseif(&number)
+"     set number!
+"   else
+"     set relativenumber!
+"   endif
+"   set number?
+" endfunc
+" nnoremap <F2> :call HideNumber()<CR>
 " F3 显示可打印字符开关
-nnoremap <F3> :set list! list?<CR>
+" nnoremap <F3> :set list! list?<CR>
 " F4 换行开关
-nnoremap <F4> :set wrap! wrap?<CR>
+" nnoremap <F4> :set wrap! wrap?<CR>
 
 " F6 语法开关，关闭语法可以加快大文件的展示
-nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+" nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
-set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
+" set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data
                                 "    that won't be autoindented
 
 " disbale paste mode when leaving insert mode
-au InsertLeave * set nopaste
+" au InsertLeave * set nopaste
 
 " F5 set paste问题已解决, 粘贴代码前不需要按F5了
 " F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
 " Automatically set paste mode in Vim when pasting in insert mode
-function! XTermPasteBegin()
-  set pastetoggle=<Esc>[201~
-  set paste
-  return ""
-endfunction
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+" function! XTermPasteBegin()
+"   set pastetoggle=<Esc>[201~
+"   set paste
+"   return ""
+" endfunction
+" inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 
 
@@ -522,7 +516,7 @@ map Y y$
 " 选中状态下 Ctrl+c 复制
 vmap <C-c> "+y
 "共享剪贴板
-set clipboard=unnamed 
+set clipboard=unnamed
 " auto jump to end of select
 " vnoremap <silent> y y`]
 " vnoremap <silent> p p`]
@@ -660,14 +654,13 @@ if has("gui_running")
     set t_Co=256
 endif
 
-set guifont=MesloLGSforPowerline\ 12
+
 
 " theme主题
 set background=dark
 set t_Co=256
 
 colorscheme solarized
-" colorscheme molokai
 
 
 " 设置标记一列的背景颜色和数字一行颜色一致
