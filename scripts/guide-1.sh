@@ -1,32 +1,38 @@
 #!/bin/bash
 
 
-function check_U_disk() {
-    until [ -d /media/${USER}/GUIDE/install_drivers ]; do
-        echo 'Please insert the USB flash disk.'
-        echo "If inserted,type 'y' or 'Y' to continue, or type any other key to exit."
-        read -n 1 user_agreed
-        if ! [ "$user_agreed" == "y" ] || [ "$user_agreed" == "Y" ]; then
-            exit 1
+SCRIPT_DIR=="$(cd `dirname $0`; pwd)"  #获取脚本路径
+
+function check_net() {
+    for (( i = 0; i < 3; i++ )); do
+        ping -c 1 114.114.114.114 > /dev/null 2>&1
+        if ! [ $? -eq 0 ];then
+            echo 'Failed to connect to the internet.'
+            echo 'Try it after 10s...'
+            sleep 5
+        else
+            return
         fi
     done
+    echo 'Please check the network, then run this scripts again.'
+    exit 1
 }
-check_U_disk  #检查U盘
+check_net  #检查网络
 
 sudo ls
-echo -n 'Copying files...'
-cp -ru /media/${USER}/GUIDE/install_drivers/ ${HOME}/  #拷贝文件
-echo 'done.'
+ln -s ${SCRIPT_DIR}/../conf ${HOME}/install_drivers  #创建软链接
 
 sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak  #备份源
 sudo cp ${HOME}/install_drivers/sources.list /etc/apt/sources.list  #替换源
 
 sudo apt-get update
-sudo apt-get -y install linux-generic-lts-xenial  #安装Ubuntu内核
+sudo apt-get -y install wget linux-generic-lts-xenial  #安装Ubuntu内核
 sudo apt-get -y upgrade  #更新软件
 
 function install_apollo_kernel() {
-    tar zxvf ${HOME}/install_drivers/linux-4.4.32-apollo-1.5.5.tar.gz -C ${HOME}/install_drivers  
+    cd ${HOME}/install_drivers
+    wget --tries=3 https://github.com/ApolloAuto/apollo-kernel/releases/download/1.5.5/linux-4.4.32-apollo-1.5.5.tar.gz
+    tar zxvf ${HOME}/install_drivers/linux-4.4.32-apollo-1.5.5.tar.gz -C ${HOME}/install_drivers
     cd ${HOME}/install_drivers/install
     sudo bash install_kernel.sh
 }
@@ -52,6 +58,6 @@ sudo su -c '
 echo "ALL ALL=NOPASSWD: ALL" >> /etc/sudoers  #修改sudo无需密码
 '  #不进入root用户无法修改
 
-echo "bash guide-2.sh" >> ${HOME}/.bashrc  #添加下一脚本的环境变量
+echo "bash ${SCRIPT_DIR}/guide-2.sh" >> ${HOME}/.bashrc  #添加下一脚本的环境变量
 
 sudo reboot  #重启
