@@ -23,6 +23,6 @@ sudo apt-get -y install openssh-server git git-lfs exfat-utils #安装必要软�
 cd
 git-lfs clone https://github.com/ApolloAuto/apollo.git  #克隆Apollo源码
 
-sed -i 's/guide-3/guid-4/g' ${HOME}/.bashrc
+sed -i 's/guide-3/guide-4/g' ${HOME}/.bashrc
 
 sudo reboot

@@ -26,6 +26,6 @@ function install_cudnn() {
 }
 install_cudnn  #安装cuDNN
 
-sed -i 's/guide-2/guid-3/g' ${HOME}/.bashrc
+sed -i 's/guide-2/guide-3/g' ${HOME}/.bashrc
 
 sudo reboot
