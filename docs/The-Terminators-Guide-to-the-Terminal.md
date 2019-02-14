@@ -76,3 +76,8 @@
 > cp ./terminal-conf/vimrc ~/k-vim/vimrc
 > cp ./terminal-conf/vimrc.bundles ~/k-vim/vimrc.bundles
 > ```
+
+### YCM安装问题
+
+- 检查vim对python的支持
+- 检查cmake版本
