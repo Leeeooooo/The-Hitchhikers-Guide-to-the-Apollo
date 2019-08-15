@@ -42,6 +42,21 @@
 	
 	- 访问[https://github.com/robbyrussell/oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)查看指南
 	
+3. 安装zsh-autosuggestion
+
+	```
+	git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/
+	```
+并且在.zshrc的plugins中添加： `zsh-autosuggestions`
+
+4. 安装高亮插件
+
+	```
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/
+	```
+并且在.zshrc的plugins中添加： `zsh-syntax-highlighting`
+然后在文件的最后一行添加： `source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh`
+	
 ### 美化 zsh
 
 1. 安装 powerlevel9k 主题
