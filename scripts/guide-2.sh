@@ -5,7 +5,7 @@ function install_nvidia_drivers() {
     cd ${HOME}/install_drivers
     echo 'Installing NVIDIA driver...'
     chmod +x ./NVIDIA-Linux-x86_64-375.39.run
-    sudo ./NVIDIA-Linux-x86_64-375.39.run --no-x-check -a -s --no-kernel-module
+    sudo bash NVIDIA-Linux-x86_64-375.39.run --no-x-check -a -s --no-kernel-module
 }
 install_nvidia_drivers  #安装NVIDIA驱动
 
