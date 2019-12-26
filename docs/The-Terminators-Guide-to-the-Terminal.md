@@ -61,16 +61,12 @@
 
 1. 安装 powerlevel9k 主题
 	
-	访问[bhilburn/powerlevel9k](https://github.com/bhilburn/powerlevel9k)查看指南
+	访问[romkatv/powerlevel10k](https://github.com/romkatv/powerlevel10k)查看指南
 	
-2. 安装 Powerline 字体
+2. 安装 nerd-fonts 字体
 
-	sudo apt-get install fonts-powerline
+	[ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 	
-3. 安装 Awesome-Powerline 字体
-
-	访问[gabrielelana/awesome-terminal-fonts](https://github.com/gabrielelana/awesome-terminal-fonts)查看指南
-
 4. （可选）拷贝我的配置文件
 	
 	```
